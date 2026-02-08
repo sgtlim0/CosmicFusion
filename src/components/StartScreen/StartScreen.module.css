@@ -1,0 +1,93 @@
+.container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 100%;
+  padding: 24px 16px;
+  text-align: center;
+  gap: 12px;
+}
+
+.title {
+  font-size: clamp(1.8rem, 7vw, 2.8rem);
+  font-weight: 900;
+  color: #aa33ff;
+  text-shadow: 0 0 30px rgba(170, 51, 255, 0.6), 0 0 60px rgba(170, 51, 255, 0.3);
+  letter-spacing: 2px;
+}
+
+.subtitle {
+  font-size: clamp(0.75rem, 2.5vw, 0.95rem);
+  color: rgba(200, 210, 255, 0.6);
+}
+
+.highScore {
+  font-size: clamp(0.7rem, 2vw, 0.85rem);
+  color: rgba(255, 204, 0, 0.7);
+}
+
+.planets {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  flex-wrap: wrap;
+  justify-content: center;
+  max-width: 340px;
+  padding: 8px 0;
+}
+
+.planetRow {
+  display: flex;
+  align-items: center;
+  gap: 3px;
+}
+
+.dot {
+  border-radius: 50%;
+  flex-shrink: 0;
+}
+
+.planetName {
+  font-size: 0.6rem;
+  color: rgba(200, 210, 255, 0.5);
+}
+
+.arrow {
+  color: rgba(200, 210, 255, 0.3);
+  font-size: 0.65rem;
+  margin: 0 2px;
+}
+
+.playBtn {
+  padding: 14px 48px;
+  border: 2px solid #aa33ff;
+  border-radius: 14px;
+  background: rgba(170, 51, 255, 0.15);
+  color: #aa33ff;
+  font-size: clamp(1rem, 3vw, 1.2rem);
+  font-weight: 800;
+  cursor: pointer;
+  transition: all 0.15s;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  -webkit-tap-highlight-color: transparent;
+  touch-action: manipulation;
+  margin-top: 8px;
+}
+
+.playBtn:hover {
+  background: rgba(170, 51, 255, 0.3);
+  box-shadow: 0 0 20px rgba(170, 51, 255, 0.4);
+}
+
+.playBtn:active {
+  transform: scale(0.92);
+}
+
+.controls {
+  font-size: clamp(0.6rem, 2vw, 0.75rem);
+  color: rgba(200, 210, 255, 0.35);
+  line-height: 1.6;
+  margin-top: 8px;
+}

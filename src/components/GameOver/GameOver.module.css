@@ -1,0 +1,95 @@
+.overlay {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  background: rgba(10, 10, 46, 0.85);
+  backdrop-filter: blur(8px);
+  z-index: 10;
+  padding: 20px;
+}
+
+.title {
+  font-size: clamp(1.4rem, 5vw, 2rem);
+  font-weight: 900;
+  color: #ff4444;
+  text-shadow: 0 0 30px rgba(255, 68, 68, 0.6);
+  margin-bottom: 4px;
+}
+
+.newRecord {
+  font-size: clamp(0.8rem, 3vw, 1rem);
+  color: #ffcc00;
+  text-shadow: 0 0 15px rgba(255, 204, 0, 0.5);
+  margin-bottom: 16px;
+}
+
+.stats {
+  display: flex;
+  gap: clamp(24px, 8vw, 40px);
+  margin-bottom: 32px;
+}
+
+.stat {
+  text-align: center;
+}
+
+.statValue {
+  font-size: clamp(1.2rem, 4vw, 1.8rem);
+  font-weight: 800;
+  color: #e0e8ff;
+}
+
+.statLabel {
+  font-size: 0.7rem;
+  color: rgba(200, 210, 255, 0.5);
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+.buttons {
+  display: flex;
+  gap: 12px;
+}
+
+.retryBtn,
+.menuBtn {
+  padding: 12px 24px;
+  border: 2px solid;
+  border-radius: 12px;
+  font-size: clamp(0.75rem, 2.5vw, 0.9rem);
+  font-weight: 700;
+  cursor: pointer;
+  transition: all 0.15s;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  -webkit-tap-highlight-color: transparent;
+  touch-action: manipulation;
+}
+
+.retryBtn:active,
+.menuBtn:active {
+  transform: scale(0.92);
+}
+
+.retryBtn {
+  border-color: #aa33ff;
+  background: rgba(170, 51, 255, 0.15);
+  color: #aa33ff;
+}
+
+.retryBtn:hover {
+  background: rgba(170, 51, 255, 0.3);
+}
+
+.menuBtn {
+  border-color: rgba(200, 210, 255, 0.3);
+  background: rgba(200, 210, 255, 0.05);
+  color: rgba(200, 210, 255, 0.7);
+}
+
+.menuBtn:hover {
+  background: rgba(200, 210, 255, 0.15);
+}
