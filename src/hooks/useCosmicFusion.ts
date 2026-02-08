@@ -68,7 +68,7 @@ export function useCosmicFusion() {
     if (!engine) return
 
     const x = dropXRef.current
-    const y = LIMIT_Y - 30
+    const y = LIMIT_Y - 45
     const t = nextRef.current
     const def = PLANETS[t]
 
@@ -186,7 +186,7 @@ export function useCosmicFusion() {
 
     const getX = (cx: number) => {
       const rect = canvas.getBoundingClientRect()
-      return Math.max(20, Math.min(GAME_WIDTH - 20, (cx - rect.left) / scaleRef.current))
+      return Math.max(45, Math.min(GAME_WIDTH - 45, (cx - rect.left) / scaleRef.current))
     }
 
     const onMouseMove = (e: MouseEvent) => { dropXRef.current = getX(e.clientX) }

@@ -41,9 +41,9 @@ export function drawBackground(
   ctx.fillRect(0, 0, GAME_WIDTH, GAME_HEIGHT)
 
   const nebulas = [
-    { x: 80, y: 200, r: 120, color: 'rgba(100,30,150,0.04)' },
-    { x: 300, y: 400, r: 100, color: 'rgba(30,80,150,0.04)' },
-    { x: 190, y: 550, r: 90, color: 'rgba(150,30,60,0.03)' },
+    { x: 90, y: 230, r: 140, color: 'rgba(100,30,150,0.04)' },
+    { x: 350, y: 460, r: 120, color: 'rgba(30,80,150,0.04)' },
+    { x: 220, y: 630, r: 110, color: 'rgba(150,30,60,0.03)' },
   ]
   for (const n of nebulas) {
     const ng = ctx.createRadialGradient(n.x, n.y, 0, n.x, n.y, n.r)
@@ -255,7 +255,7 @@ export function drawPreview(
   frame: number,
 ) {
   const def = PLANETS[typeIdx]
-  const previewY = LIMIT_Y - 30
+  const previewY = LIMIT_Y - 45
 
   ctx.save()
   ctx.setLineDash([4, 4])
@@ -365,14 +365,14 @@ export function drawHUD(
   }
 
   ctx.fillStyle = 'rgba(200,210,255,0.5)'
-  ctx.font = '10px system-ui'
+  ctx.font = '11px system-ui'
   ctx.textAlign = 'right'
-  ctx.fillText('NEXT', GAME_WIDTH - 16, 16)
+  ctx.fillText('NEXT', GAME_WIDTH - 18, 18)
 
   const nd = PLANETS[nextTypeIdx]
-  const pr = Math.min(nd.radius, 12)
-  const px = GAME_WIDTH - 22
-  const py = 35
+  const pr = Math.min(nd.radius, 16)
+  const px = GAME_WIDTH - 26
+  const py = 38
   const mg = ctx.createRadialGradient(px - 1, py - 1, 0, px, py, pr)
   mg.addColorStop(0, lighten(nd.color, 0.3))
   mg.addColorStop(1, nd.color)
