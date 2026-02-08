@@ -156,7 +156,7 @@ export function useCosmicFusion() {
     setPhase('menu')
   }, [])
 
-  /* ---- canvas sizing ---- */
+  /* ---- canvas sizing (re-run when phase changes so canvas is in DOM) ---- */
   useEffect(() => {
     const canvas = canvasRef.current
     const wrapper = wrapperRef.current
@@ -166,6 +166,7 @@ export function useCosmicFusion() {
       const dpr = window.devicePixelRatio || 1
       const cw = wrapper.clientWidth
       const ch = wrapper.clientHeight
+      if (cw === 0 || ch === 0) return
       const s = Math.min(cw / GAME_WIDTH, ch / GAME_HEIGHT)
       canvas.width = Math.round(GAME_WIDTH * s * dpr)
       canvas.height = Math.round(GAME_HEIGHT * s * dpr)
@@ -177,9 +178,9 @@ export function useCosmicFusion() {
     resize()
     window.addEventListener('resize', resize)
     return () => window.removeEventListener('resize', resize)
-  }, [])
+  }, [phase])
 
-  /* ---- input ---- */
+  /* ---- input (re-run when phase changes so canvas is in DOM) ---- */
   useEffect(() => {
     const canvas = canvasRef.current
     if (!canvas) return
@@ -191,6 +192,10 @@ export function useCosmicFusion() {
 
     const onMouseMove = (e: MouseEvent) => { dropXRef.current = getX(e.clientX) }
     const onClick = () => { if (phaseRef.current === 'playing') dropPlanet() }
+    const onTouchStart = (e: TouchEvent) => {
+      e.preventDefault()
+      if (e.touches.length > 0) dropXRef.current = getX(e.touches[0].clientX)
+    }
     const onTouchMove = (e: TouchEvent) => {
       e.preventDefault()
       if (e.touches.length > 0) dropXRef.current = getX(e.touches[0].clientX)
@@ -202,15 +207,17 @@ export function useCosmicFusion() {
 
     canvas.addEventListener('mousemove', onMouseMove)
     canvas.addEventListener('click', onClick)
+    canvas.addEventListener('touchstart', onTouchStart, { passive: false })
     canvas.addEventListener('touchmove', onTouchMove, { passive: false })
     canvas.addEventListener('touchend', onTouchEnd, { passive: false })
     return () => {
       canvas.removeEventListener('mousemove', onMouseMove)
       canvas.removeEventListener('click', onClick)
+      canvas.removeEventListener('touchstart', onTouchStart)
       canvas.removeEventListener('touchmove', onTouchMove)
       canvas.removeEventListener('touchend', onTouchEnd)
     }
-  }, [dropPlanet])
+  }, [dropPlanet, phase])
 
   /* ---- main process (updated every render) ---- */
   useEffect(() => {
